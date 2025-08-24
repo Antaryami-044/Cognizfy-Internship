@@ -34,5 +34,5 @@ app.get("/submission", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
+  console.log(`Ctrl + click --> http://localhost:${PORT}`);
 });
