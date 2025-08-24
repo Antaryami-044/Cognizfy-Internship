@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+      <title>Task 2</title>
+</head>
+
+<body
+      style="font-family:-apple-system; margin: 50px; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+
+      <h1 style="color: #20d199;">Task 2</h1>
+
+      <form action="/submit" method="POST" onsubmit="return validateForm()"
+            style="border:1px solid #ccc; padding:20px; width:300px;">
+            <label>Name:
+                  <input type="text" placeholder="enter your name" name="name" id="name"
+                        style="width:75%; padding:5px; position:relative; right:-10px;">
+            </label>
+            <br><br>
+
+            <label>Email:
+                  <input type="text" placeholder="newone@gmail.com" name="email" id="email"
+                        style="width:75%; padding:5px;position: relative; right:-10px;">
+            </label>
+            <br><br>
+
+            <label>Age:
+                  <input type="text" name="age" id="age"
+                        style="width:75%; padding:5px;position: relative; right:-20px;">
+            </label>
+            <br><br>
+
+            <label>Message:
+                  <textarea name="message" placeholder="Type your message here" id="message" rows="4"
+                        style="width:96%; position:relative; top:10px;"></textarea>
+            </label>
+            <br><br>
+            <button id="button" type="submit"
+                  style="background:#308516; color:white; padding:10px 20px; border:none; cursor:pointer; position:relative; left:37%;">
+                  Submit
+            </button>
+      </form>
+
+      <script>
+            function validateForm() {
+                  let name = document.getElementById("name").value.trim();
+                  let email = document.getElementById("email").value.trim();
+                  let age = document.getElementById("age").value.trim();
+
+                  if (name === "" || email === "" || age === "") {
+                        alert("All fields are required!");
+                        return false;
+                  }
+                  if (isNaN(age) || age < 18) {
+                        alert("Age must be 18 or above!");
+                        return false;
+                  }
+                  return true;
+            }
+
+      </script>
+</body>
+
+</html>

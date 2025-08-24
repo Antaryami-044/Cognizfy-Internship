@@ -1,0 +1,27 @@
+body {
+      background: #f8f9fa;
+      font-family: Arial, sans-serif;
+}
+
+.form-box {
+      border: 2px solid #ccc;
+      border-radius: 100px;
+      padding: 30px;
+      /* background: #e70000; */
+      transition: all 0.3s ease-in-out;
+}
+
+.form-box:hover {
+      border-color: #20d199;
+      box-shadow: 0 0 15px rgba(32, 209, 153, 0.4);
+}
+
+.btn-success {
+      background-color: #20d199;
+      border: none;
+      transition: all 0.3s;
+}
+
+.btn-success:hover {
+      background-color: #17a586;
+}

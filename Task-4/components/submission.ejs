@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submissions</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>All Submissions</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Age</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (submissions && submissions.length> 0) { %>
+          <% submissions.forEach((submission, index)=> { %>
+            <tr>
+              <td>
+                <%= index + 1 %>
+              </td>
+              <td>
+                <%= submission.name %>
+              </td>
+              <td>
+                <%= submission.email %>
+              </td>
+              <td>
+                <%= submission.age %>
+              </td>
+              <!-- <td><%= submission.message %></td> -->
+              <td>
+                <%= submission.message.split(" ").slice(0, 2).join(" ") %></td>
+            </tr>
+          <% }) %>
+        <% } else { %>
+          <tr>
+            <td colspan=" 5">No submissions yet.
+              </td>
+            </tr>
+            <% } %>
+      </tbody>
+    </table>
+    <a href="/register" class="btn">Back to Register</a>
+  </div>
+</body>
+
+</html>

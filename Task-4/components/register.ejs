@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Registration Form</h2>
+    <form action="/register" method="POST" onsubmit="return validateForm()">
+      <div class="form-control">
+        <label>Name:</label>
+        <input type="text" id="name" name="name" required>
+        <small></small>
+      </div>
+
+      <div class="form-control">
+        <label>Email:</label>
+        <input type="email" id="email" name="email" required>
+        <small></small>
+      </div>
+
+      <div class="form-control">
+        <label>Age:</label>
+        <input type="number" id="age" name="age" required>
+        <small></small>
+      </div>
+
+      <div class="form-control">
+        <label>Password:</label>
+        <input type="password" id="password" name="password" required onkeyup="checkPasswordStrength()">
+        <span id="strength"></span>
+      </div>
+
+      <div class="form-control">
+        <label>Confirm Password:</label>
+        <input type="password" id="confirmPassword" required>
+        <small></small>
+      </div>
+
+      <div class="form-control">
+        <label>Message:</label>
+        <textarea name="message" id="message"></textarea>
+      </div>
+
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </div>
+
+  <script src="/validation.js"></script>
+</body>
+
+</html>
