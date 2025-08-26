@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container container-narrow">
+    <h2 style="text-align:cneter">Registration Form</h2>
+
+    <form action="/register" method="POST" onsubmit="return validateForm()">
+      <div class="form-control">
+        <label>Name</label>
+        <input id="name" name="name" type="text" required>
+      </div>
+
+      <div class="form-control">
+        <label>Email</label>
+        <input id="email" name="email" type="email" required>
+      </div>
+
+      <div class="form-control">
+        <label>Age</label>
+        <input id="age" name="age" type="number" required>
+      </div>
+
+      <div class="form-control">
+        <label>Password</label>
+        <input id="password" name="password" type="password" required onkeyup="checkPasswordStrength()">
+        <span id="strength"></span>
+      </div>
+
+      <div class="form-control">
+        <label>Confirm Password</label>
+        <input id="confirmPassword" type="password" required>
+      </div>
+
+      <div class="form-control">
+        <label>Message</label>
+        <textarea id="message" name="message" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="F1">Submit</button>
+    </form>
+  </div>
+
+  <script src="/validation.js"></script>
+</body>
+</html>
+
