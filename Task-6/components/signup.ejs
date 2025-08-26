@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <div class="container container-narrow">
+    <h2>Create Account</h2>
+    <form id="signupForm" class="form" onsubmit="return false;">
+      <div class="form-control">
+        <label>Name</label>
+        <input id="sName" type="text" required>
+      </div>
+      <div class="form-control">
+        <label>Email</label>
+        <input id="sEmail" type="email" required>
+      </div>
+      <div class="form-control">
+        <label>Password</label>
+        <input id="sPassword" type="password" required>
+      </div>
+      <div class="form-control">
+        <label>Confirm Password</label>
+        <input id="sConfirm" type="password" required>
+      </div>
+      <div class="center gap">
+        <button class="btn" id="signupBtn">Sign Up</button>
+        <a class="btn btn-muted" href="/login">Log In</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("signupBtn").addEventListener("click", async () => {
+      const name = document.getElementById("sName").value.trim();
+      const email = document.getElementById("sEmail").value.trim();
+      const password = document.getElementById("sPassword").value.trim();
+      const confirm = document.getElementById("sConfirm").value.trim();
+      if (password !== confirm) return alert("Passwords do not match.");
+      const res = await fetch("/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password })
+      });
+      const data = await res.json();
+      if (data.ok) {
+        localStorage.setItem("jwt", data.token);
+        window.location.href = "/register";
+      } else {
+        alert(data.error || "Signup failed");
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Submissions</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2 class="center">My Submissions</h2>
+
+    <div class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Message</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (submissions && submissions.length) { %>
+            <% submissions.forEach(function(s, i){ %>
+              <tr>
+                <td>
+                  <%= i + 1 %>
+                </td>
+                <td>
+                  <%= s.name %>
+                </td>
+                <td>
+                  <%= s.email %>
+                </td>
+                <td>
+                  <%= s.age %>
+                </td>
+                <td>
+                  <%= s.message %>
+                </td>
+                <td>
+                  <%= new Date(s.createdAt).toLocaleString() %>
+                </td>
+              </tr>
+              <% }) %>
+                <% } else { %>
+                  <tr>
+                    <td colspan="6" class="center">No submissions Found</td>
+                  </tr>
+                  <% } %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="center gap">
+      <a class="btn " href="/">Home</a>
+      <a class="btn " href="/register">Create Another</a>
+      <button class="btn btn-muted" id="logoutBtn">Logout</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+      await fetch("/auth/logout", { method: "POST" });
+      localStorage.removeItem("jwt");
+      window.location.href = "/login";
+    });
+  </script>
+</body>
+
+</html>

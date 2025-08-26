@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Submission</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <div class="container container-narrow">
+    <h2 class="center">Registration Form</h2>
+    <form action="/form/submit" method="POST" onsubmit="return validateForm()">
+      <div class="form-control">
+        <label>Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-control">
+        <label>Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-control">
+        <label>Age</label>
+        <input type="number" id="age" name="age" required>
+      </div>
+      <div class="form-control">
+        <label>Message</label>
+        <textarea id="message" name="message" rows="3"></textarea>
+      </div>
+      <div class="center gap">
+        <button class="btn" type="submit">Save</button>
+        <a class="btn btn-alt" href="/submission">My Submissions</a>
+        <!-- <button class="btn btn-muted" type="button" id="logoutBtn">Logout</button> -->
+      </div>
+    </form>
+  </div>
+
+  <script src="/validation.js"></script>
+  <script>
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+      await fetch("/auth/logout", { method: "POST" });
+      localStorage.removeItem("jwt");
+      window.location.href = "/login";
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <div class="container container-narrow">
+    <h2>Log In</h2>
+    <form id="loginForm" class="form" onsubmit="return false;">
+      <div class="form-control">
+        <label>Email</label>
+        <input id="loginEmail" type="email" required>
+      </div>
+      <div class="form-control">
+        <label>Password</label>
+        <input id="loginPassword" type="password" required>
+      </div>
+      <div class="center gap">
+        <button class="btn" id="loginBtn">Log In</button>
+        <a class="btn btn-muted" href="/signup">Create Account</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("loginBtn").addEventListener("click", async () => {
+      const email = document.getElementById("loginEmail").value.trim();
+      const password = document.getElementById("loginPassword").value.trim();
+      const res = await fetch("/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await res.json();
+      if (data.ok) {
+        localStorage.setItem("jwt", data.token);
+        window.location.href = "/register";
+      } else {
+        alert(data.error || "Login failed");
+      }
+    });
+  </script>
+</body>
+
+</html>
